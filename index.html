@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Color</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.css" integrity="sha256-0gNW6jKGMP+oFR22hK5tl1qsZf21rWKR5cqmkyaLyjI=" crossorigin="anonymous" />
+</head>
+<body style="width: 100vw;height:100vh;">
+<div id="menu" >
+<div id="colorpicker"></div>
+</div>
+<script
+			  src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+			  integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+			  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.js" integrity="sha256-3wWiHra+MxkTwcZwUQkkowAjnu5uqAF+6hE676OitiE=" crossorigin="anonymous"></script>
+<script>
+
+let selected_color = "#aabbcc"
+
+
+const toggle_menu = (ev) => {
+  
+$('#menu').toggle()
+}
+
+const color_change = (color) => {
+  $('body').css('background-color', color.toHexString())
+}
+
+$(() => {
+$("#colorpicker").spectrum({
+	flat:true,
+	color: selected_color,
+	showInput: true,
+	showButtons: false,
+	preferredFormat:"hex3",
+        change: color_change,
+        move: color_change,
+        dragstop: color_change,
+})
+document.querySelector('body').addEventListener('click', toggle_menu, false)
+})
+
+
+</script>
+</body>
+</html>
